@@ -1,13 +1,10 @@
 import React from "react";
-import { createRoot } from "react-dom";
 import DescriptionList from "./DescriptionList";
 
-const App = () => {
-  return (
-    <div>
-      <DescriptionList />
-    </div>
-  );
-};
+class App extends React.Component {
+  render() {
+    return <DescriptionList />;
+  }
+}
 
-createRoot(document.getElementById("root")).render(<App />);
+export default App;
