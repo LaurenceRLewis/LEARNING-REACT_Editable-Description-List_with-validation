@@ -1,0 +1,17 @@
+dl {
+  width: 50%;
+  margin: 0 auto;
+}
+
+dt,
+dd {
+  padding: 10px;
+}
+
+.error-message {
+  color: red;
+}
+
+.status-message {
+  color: green;
+}
