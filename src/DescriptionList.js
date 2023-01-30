@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./DescriptionList.css";
 import { validateName } from "./Validation";
 
@@ -12,6 +12,14 @@ function DescriptionList() {
     setIsEditing(true);
     setStatusMessage("");
   };
+
+  useEffect(() => {
+    if (isEditing) {
+      const form = document.querySelector("form");
+      const input = form.querySelector("input");
+      input.focus();
+    }
+  }, [isEditing]);
 
   const handleSave = (event) => {
     event.preventDefault();
@@ -42,8 +50,13 @@ function DescriptionList() {
               />
               {!isValid && (
                 <p id="name-error" className="error-message">
+
+                  Error! Invalid character entered. PLease use letters A—z,
+                  hyphens and spaces only.
+
                   Error! Invalid character entered. Please enter a valid name
                   using letters A—z, Hyphens and spaces.
+
                 </p>
               )}
             </label>
