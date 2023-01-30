@@ -50,8 +50,13 @@ function DescriptionList() {
               />
               {!isValid && (
                 <p id="name-error" className="error-message">
+
                   Error! Invalid character entered. PLease use letters A—z,
                   hyphens and spaces only.
+
+                  Error! Invalid character entered. Please enter a valid name
+                  using letters A—z, Hyphens and spaces.
+
                 </p>
               )}
             </label>
