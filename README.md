@@ -1,4 +1,5 @@
 # LEARNING-REACT_Editable-Description-List_with-validation
+
 ## Steps used to build the component
 
 1. Created a new React component named DescriptionList.
@@ -11,7 +12,29 @@
 8. Created a CSS file and added styles for the description list and the error and status messages.
 9. Imported the CSS file into the component file.
 
-### Validation:
+### Validation: (Changes to use useEffect hook)
+
+1. Import the useEffect hook from the React library
+2. Removed the handleSave function
+3. Added the useEffect hook to validate the name
+4. Updated the form element to submit the form when the "Enter" key is pressed
+5. Added the aria-invalid and aria-errormessage attributes to the input element for accessibility.
+
+#### How to implement the useEffect hook
+
+1. Import the useEffect hook from the React library: import React, { useState, useEffect } from "react";
+2. Remove the handleSave function and update the const handleEdit function to call setIsEditing(true) and setStatusMessage("").
+3. Add the useEffect hook to the top of the component, just below the state variables, to run the validateName function when the name changes.
+4. Update the form element in the return statement to submit the form when the "Enter" key is pressed, rather than clicking the "Save" button. This is because the handleSave function was removed.
+5. Add the aria-invalid and aria-errormessage attributes to the input element to help users with accessibility issues.
+
+6. Import the useEffect hook from the React library
+   Removed the handleSave function
+   Added the useEffect hook to validate the name
+   Updated the form element to submit the form when the "Enter" key is pressed
+   Added the aria-invalid and aria-errormessage attributes to the input element for accessibility.
+
+#### Validation: (old method using handleSave)
 
 1. To validate the input, a regular expression was used to check that the input value only contains letters and hyphens.
 2. The regular expression is tested against the input value in the handleSave function.
