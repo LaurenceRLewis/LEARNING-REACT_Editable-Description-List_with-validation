@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./DescriptionList.css";
+import "./button-styles.css";
 import { validateName } from "./Validation";
 
 function DescriptionList() {
@@ -50,22 +51,26 @@ function DescriptionList() {
               />
               {!isValid && (
                 <p id="name-error" className="error-message">
-
-                  Error! Invalid character entered. PLease use letters A—z,
-                  hyphens and spaces only.
-
                   Error! Invalid character entered. Please enter a valid name
-                  using letters A—z, Hyphens and spaces.
-
+                  using letters A—z, hyphens and spaces.
                 </p>
               )}
             </label>
-            <button type="submit">Save</button>
+            <div>
+              <button className="btn--save" type="submit">
+                Save
+              </button>
+            </div>
           </dd>
         </form>
       ) : (
         <dd>
-          {name} <button onClick={handleEdit}>Edit name</button>
+          {name}
+          <div>
+            <button className="btn--edit" onClick={handleEdit}>
+              Edit name
+            </button>
+          </div>
         </dd>
       )}
       {statusMessage && <dd className="status-message">{statusMessage}</dd>}
