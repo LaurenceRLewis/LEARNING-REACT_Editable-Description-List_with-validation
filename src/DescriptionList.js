@@ -41,9 +41,10 @@ function DescriptionList() {
                 aria-errormessage={isValid ? "" : "name-error"}
               />
               {!isValid && (
-                <span id="name-error" className="error-message">
-                  Error! Invalid character entered.
-                </span>
+                <p id="name-error" className="error-message">
+                  Error! Invalid character entered. Please enter a valid name
+                  using letters A—z, Hyphens and spaces.
+                </p>
               )}
             </label>
             <button type="submit">Save</button>
