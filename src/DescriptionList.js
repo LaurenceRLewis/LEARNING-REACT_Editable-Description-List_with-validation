@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./DescriptionList.css";
 import { validateName } from "./Validation";
 
@@ -12,6 +12,14 @@ function DescriptionList() {
     setIsEditing(true);
     setStatusMessage("");
   };
+
+  useEffect(() => {
+    if (isEditing) {
+      const form = document.querySelector("form");
+      const input = form.querySelector("input");
+      input.focus();
+    }
+  }, [isEditing]);
 
   const handleSave = (event) => {
     event.preventDefault();
@@ -41,9 +49,10 @@ function DescriptionList() {
                 aria-errormessage={isValid ? "" : "name-error"}
               />
               {!isValid && (
-                <span id="name-error" className="error-message">
-                  Error! Invalid character entered.
-                </span>
+                <p id="name-error" className="error-message">
+                  Error! Invalid character entered. PLease use letters A—z,
+                  hyphens and spaces only.
+                </p>
               )}
             </label>
             <button type="submit">Save</button>
