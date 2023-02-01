@@ -1,5 +1,7 @@
 # LEARNING-REACT_Editable-Description-List_with-validation
 
+Preview: https://csb-6n06qb.netlify.app/
+
 ## Steps used to build the component
 
 1. Created a new React component named DescriptionList.
