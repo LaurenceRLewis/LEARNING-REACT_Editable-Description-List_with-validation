@@ -1,6 +1,8 @@
 # LEARNING-REACT_Editable-Description-List_with-validation
 
-Preview: https://csb-6n06qb.netlify.app/
+**This is my attempt at learning REACT. There are many bugs in these components and they MUST not be copied for use in production.**
+
+Working example on Netify:
 
 ## Steps used to build the component
 
