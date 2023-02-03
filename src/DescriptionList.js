@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./DescriptionList.css";
 import "./button-styles.css";
 import { validateName } from "./Validation";
@@ -8,6 +8,7 @@ function DescriptionList() {
   const [isEditing, setIsEditing] = useState(false);
   const [isValid, setIsValid] = useState(true);
   const [statusMessage, setStatusMessage] = useState("");
+  const editBtnRef = useRef(null);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -31,31 +32,33 @@ function DescriptionList() {
       setName(newName);
       setIsEditing(false);
       setStatusMessage("Your name is successfully updated.");
+      setTimeout(() => {
+        editBtnRef.current.focus();
+      }, 0);
     }
   };
 
   return (
     <dl>
-      <dt>Name:</dt>
+      <dt id="keyName">Name:</dt>
       {isEditing ? (
         <form onSubmit={handleSave}>
           <dd>
-            <label htmlFor="name">
-              <input
-                type="text"
-                id="name"
-                name="name"
-                defaultValue={name}
-                aria-invalid={!isValid}
-                aria-errormessage={isValid ? "" : "name-error"}
-              />
-              {!isValid && (
-                <p id="name-error" className="error-message">
-                  Error! Invalid character entered. Please enter a valid name
-                  using letters A—z, hyphens and spaces.
-                </p>
-              )}
-            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              aria-labelledby="keyName"
+              defaultValue={name}
+              aria-invalid={!isValid}
+              aria-errormessage={isValid ? "" : "name-error"}
+            />
+            {!isValid && (
+              <p id="name-error" className="error-message">
+                Error! Invalid character entered. Please enter a valid name
+                using letters A—z, hyphens and spaces.
+              </p>
+            )}
             <div>
               <button className="btn--save" type="submit">
                 Save
@@ -67,13 +70,15 @@ function DescriptionList() {
         <dd>
           {name}
           <div>
-            <button className="btn--edit" onClick={handleEdit}>
+            <button className="btn--edit" onClick={handleEdit} ref={editBtnRef}>
               Edit name
             </button>
           </div>
         </dd>
       )}
-      {statusMessage && <dd className="status-message">{statusMessage}</dd>}
+      <div role="status">
+        {statusMessage && <dd className="status-message">{statusMessage}</dd>}
+      </div>
     </dl>
   );
 }
